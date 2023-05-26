@@ -1,4 +1,6 @@
 const createBtn = document.getElementById('create-char')
+const keepBtn = document.getElementById('keep')
+const retryBtn = document.getElementById('retry')
 
 const createPicCont = document.getElementById("create-cont-pic")
 const createNameCont = document.getElementById("create-name")
@@ -8,7 +10,10 @@ const createTalentCont = document.getElementById("create-talent")
 
 const createChar = (e) => {
     e.preventDefault()
-    
+
+    keepBtn.classList.add("reveal")
+    retryBtn.classList.add("reveal")
+
     axios.get("/api/createcharacter")
     .then(res => {
 
