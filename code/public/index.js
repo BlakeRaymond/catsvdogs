@@ -3,6 +3,8 @@ const keepBtn = document.getElementById('keep')
 const retryBtn = document.getElementById('retry')
 
 const centerDiv = document.getElementById('center')
+const leftDiv = document.getElementById('left')
+const rightDiv = document.getElementById('right')
 
 const createPicCont = document.getElementById("create-cont-pic")
 const createNameCont = document.getElementById("create-name")
@@ -14,6 +16,7 @@ const compName = document.getElementById('comp-name')
 const compHomeland = document.getElementById('comp-homeland')
 const compTalent = document.getElementById('comp-talent')
 
+let createCharEventHandlerFunction
 
 const createChar = (e) => {
     e.preventDefault()
@@ -56,11 +59,20 @@ const createChar = (e) => {
         createPic.src = res.data.pic
         createPicCont.appendChild(createPic)
 
-        console.log(res.data)
+        if (createCharEventHandlerFunction !== undefined) {
+            keepBtn.removeEventListener("click",  createCharEventHandlerFunction)
+        }
+        
+        createCharEventHandlerFunction = () => {
 
-        keepBtn.addEventListener("click", () => {
+            rightDiv.classList.remove("hide")
+            leftDiv.classList.remove("hide")
+
             keepChar(res.data), compChar()
-        })
+        }
+
+        keepBtn.addEventListener("click", createCharEventHandlerFunction)
+
     }).catch(err => console.log(err))
 
 }

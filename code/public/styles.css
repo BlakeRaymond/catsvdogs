@@ -21,6 +21,10 @@ section {
 
 .info-cont {
     margin-top: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #create-cont-pic {  
@@ -107,6 +111,16 @@ text-align: center;
 
 #right {
     transform: translate(500px, 0px);
+}
+
+.left1 {
+    transition: 1.5s;
+    transform: translate(500px, 0px);
+}
+
+.right1 {
+    transition: 1.5s;
+    transform: translate(-500px, 0px);
 } */
 
 .character-pic {
