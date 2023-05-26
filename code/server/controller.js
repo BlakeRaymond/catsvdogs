@@ -28,4 +28,8 @@ module.exports = {
 
         res.status(200).send(potChar)
     },
+
+    keepChar: (req, res) => {
+        
+    }
 }

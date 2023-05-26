@@ -9,9 +9,10 @@ app.use(express())
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "../public")))
 
-const { createChar } = require("./controller.js")
+const { createChar, keepChar } = require("./controller.js")
 
 app.get("/api/createcharacter", createChar)
+app.post("/api/keepcharacter", keepChar)
 
 app.listen(4000, () => {
     console.log('up and running on port 4000')
