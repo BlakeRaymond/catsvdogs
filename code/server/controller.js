@@ -18,7 +18,6 @@ module.exports = {
         let randomHomeland = homelandDb[homelandIndex];
         let randomPic = picDb[picIndex];
         let randomTalent = talentDb[talentIndex];
-        console.log(randomTalent, randomPic, randomHomeland, randomName)
 
         let potChar = {
             pic: randomPic,

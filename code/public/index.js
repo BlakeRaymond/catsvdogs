@@ -1,5 +1,3 @@
-console.log('We made it THIS far')
-
 const createBtn = document.getElementById('create-char')
 
 const createPicCont = document.getElementById("create-cont-pic")
@@ -9,12 +7,43 @@ const createTalentCont = document.getElementById("create-talent")
 
 
 const createChar = (e) => {
-    console.log("We made it this far")
     e.preventDefault()
     
     axios.get("/api/createcharacter")
     .then(res => {
-        console.log(res.data)
+
+        //NAME
+
+        createNameCont.textContent = ""
+
+        let nameText = document.createElement('p')
+        nameText.textContent = res.data.name
+        createNameCont.appendChild(nameText)
+
+        //HOMELAND
+
+        createHomelandCont.textContent = ""
+
+        let homelandText = document.createElement('p')
+        homelandText.textContent = res.data.homeland
+        createHomelandCont.appendChild(homelandText)
+
+        //TALENT
+
+        createTalentCont.textContent = ""
+
+        let talentText = document.createElement('p')
+        talentText.textContent = res.data.talent
+        createTalentCont.appendChild(talentText)
+
+        //PIC
+
+        createPicCont.innerHTML = ""
+
+        let createPic = document.createElement('img')
+        createPic.src = res.data.pic
+        createPicCont.appendChild(createPic)
+
     })
 }
 
