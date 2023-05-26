@@ -3,10 +3,16 @@ const keepBtn = document.getElementById('keep')
 const retryBtn = document.getElementById('retry')
 
 const centerDiv = document.getElementById('center')
+
 const createPicCont = document.getElementById("create-cont-pic")
 const createNameCont = document.getElementById("create-name")
 const createHomelandCont = document.getElementById("create-homeland")
 const createTalentCont = document.getElementById("create-talent")
+
+const compPic = document.getElementById('comp-pic')
+const compName = document.getElementById('comp-name')
+const compHomeland = document.getElementById('comp-homeland')
+const compTalent = document.getElementById('comp-talent')
 
 
 const createChar = (e) => {
@@ -50,8 +56,10 @@ const createChar = (e) => {
         createPic.src = res.data.pic
         createPicCont.appendChild(createPic)
 
-        keepBtn.addEventListener("click", function () {
-            keepChar(res.data)
+        console.log(res.data)
+
+        keepBtn.addEventListener("click", () => {
+            keepChar(res.data), compChar()
         })
     }).catch(err => console.log(err))
 
@@ -92,13 +100,42 @@ const keepChar = (charObj) => {
 
     /* <----- AXIOS POST REQUEST -----> */ 
     
-    axios.post("/api/keepcharacter",)
-    console.log(charObj)
-    .then(res => console.log(res))
+    axios.post("/api/keepcharacter", charObj)
+    .then(res => alert(res.data))
     .catch(err => console.log(err))
 
 }
 
-createBtn.addEventListener("click", createChar)
+const compChar = () => {
+    console.log("you made it")
+    axios.get("/api/createcharacter")
+    .then(res => {
 
-//Need to create a function to hide/reveal things
+        //COMP NAME
+
+        let compNameText = document.createElement('p')
+        compNameText.textContent = res.data.name
+        compName.appendChild(compNameText)
+
+        //COMP HOMELAND
+
+        let compHomelandText = document.createElement('p')
+        compHomelandText.textContent = res.data.homeland
+        compHomeland.appendChild(compHomelandText)
+
+        //COMP TALENT
+
+        let compTalentText = document.createElement('p')
+        compTalentText.textContent = res.data.talent
+        compTalent.appendChild(compTalentText)
+
+        //COMP PIC
+
+        let compPicImg = document.createElement('img')
+        compPicImg.src = res.data.pic
+        compPic.appendChild(compPicImg)
+    })
+}
+
+createBtn.addEventListener("click", createChar)
+retryBtn.addEventListener("click", createChar)
