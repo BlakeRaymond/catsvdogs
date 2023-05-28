@@ -25,9 +25,8 @@ module.exports = {
             name: randomName,
             homeland: randomHomeland,
             talent: randomTalent,
-            HP: 100
+
         }
-        // console.log(potChar)
         res.status(200).send(potChar)
     },
 
@@ -46,6 +45,13 @@ module.exports = {
         charactersDb.push(newChar)
         res.status(200).send('Prepare for BATTLE!')
         charId++
-        console.log(charactersDb[charactersDb.length -1])
+    },
+
+    resetComp: (req, res) => {
+
+        charactersDb[0].HP = 100
+        console.log(charactersDb[0])
+
+        res.status(200).send("You did it!")
     }
 }

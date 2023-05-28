@@ -31,6 +31,11 @@ const compName = document.getElementById('comp-name')
 const compHomeland = document.getElementById('comp-homeland')
 const compTalent = document.getElementById('comp-talent')
 
+//HP COUNTER
+
+const playerHpText = document.getElementById('hp')
+const compHpText = document.getElementById('comp-health')
+
 // MISC
 let createCharEventHandlerFunction
 
@@ -39,65 +44,65 @@ const createChar = (e) => {
 
     keepBtn.classList.remove("hide")
     retryBtn.classList.remove("hide")
-    
+
 
     axios.get("/api/createcharacter")
-    .then(res => {
+        .then(res => {
 
-        //NAME
+            //NAME
 
-        createNameCont.textContent = ""
+            createNameCont.textContent = ""
 
-        let nameText = document.createElement('p')
-        nameText.textContent = res.data.name
-        createNameCont.appendChild(nameText)
+            let nameText = document.createElement('p')
+            nameText.textContent = res.data.name
+            createNameCont.appendChild(nameText)
 
-        //HOMELAND
+            //HOMELAND
 
-        createHomelandCont.textContent = ""
+            createHomelandCont.textContent = ""
 
-        let homelandText = document.createElement('p')
-        homelandText.textContent = res.data.homeland
-        createHomelandCont.appendChild(homelandText)
+            let homelandText = document.createElement('p')
+            homelandText.textContent = res.data.homeland
+            createHomelandCont.appendChild(homelandText)
 
-        //TALENT
+            //TALENT
 
-        createTalentCont.textContent = ""
+            createTalentCont.textContent = ""
 
-        let talentText = document.createElement('p')
-        talentText.textContent = res.data.talent
-        createTalentCont.appendChild(talentText)
+            let talentText = document.createElement('p')
+            talentText.textContent = res.data.talent
+            createTalentCont.appendChild(talentText)
 
-        //PIC
+            //PIC
 
-        createPicCont.innerHTML = ""
+            createPicCont.innerHTML = ""
 
-        let createPic = document.createElement('img')
-        createPic.src = res.data.pic
-        createPicCont.appendChild(createPic)
+            let createPic = document.createElement('img')
+            createPic.src = res.data.pic
+            createPicCont.appendChild(createPic)
 
-        if (createCharEventHandlerFunction !== undefined) {
-            keepBtn.removeEventListener("click",  createCharEventHandlerFunction)
-        }
-        
-        createCharEventHandlerFunction = () => {
+            if (createCharEventHandlerFunction !== undefined) {
+                keepBtn.removeEventListener("click", createCharEventHandlerFunction)
+            }
 
-            rightDiv.classList.remove("hide")
-            leftDiv.classList.remove("hide")
+            createCharEventHandlerFunction = () => {
 
-            // Wanted to reveal these divs/buttons, but maybe they're too deeply nested/unreachable?
-            
-            // fightBtn.classList.add("reveal")
-            // outcome.classList.add("reveal")
-            // innerCont.classList.add("reveal")
+                rightDiv.classList.remove("hide")
+                leftDiv.classList.remove("hide")
+
+                // Wanted to reveal these divs/buttons, but maybe they're too deeply nested/unreachable?
+
+                // fightBtn.classList.add("reveal")
+                // outcome.classList.add("reveal")
+                // innerCont.classList.add("reveal")
 
 
-            keepChar(res.data), compChar()
-        }
+                keepChar(res.data), compChar()
+            }
 
-        keepBtn.addEventListener("click", createCharEventHandlerFunction)
+            keepBtn.addEventListener("click", createCharEventHandlerFunction)
 
-    }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
 
 }
 
@@ -108,69 +113,69 @@ const keepChar = (charObj) => {
     centerDiv.classList.add("hide")
 
 
-    
+
     let { pic, name, homeland, talent } = charObj
-    
+
     //NAME
-    
+
     let nameP = document.createElement('p')
     nameP.textContent = name
     document.getElementById('saved-name').appendChild(nameP)
-    
+
     //HOMELAND
-    
+
     let homelandP = document.createElement('p')
     homelandP.textContent = homeland
     document.getElementById('saved-homeland').appendChild(homelandP)
-    
+
     //TALENT
-    
+
     let talentP = document.createElement('p')
     talentP.textContent = talent
     document.getElementById('saved-talent').appendChild(talentP)
-    
+
     //PIC
-    
+
     let picP = document.createElement('img')
     picP.src = pic
     document.getElementById('saved-pic').appendChild(picP)
 
-    /* <----- AXIOS POST REQUEST -----> */ 
-    
+    /* <----- AXIOS POST REQUEST -----> */
+
     axios.post("/api/keepcharacter", charObj)
-    .then(res => alert(res.data))
-    .catch(err => console.log(err))
+        .then(res => alert(res.data))
+        .catch(err => console.log(err))
 
 }
 
 const compChar = () => {
     axios.get("/api/createcharacter")
-    .then(res => {
+        .then(res => {
 
-        //COMP NAME
+            //COMP NAME
 
-        let compNameText = document.createElement('p')
-        compNameText.textContent = res.data.name
-        compName.appendChild(compNameText)
+            let compNameText = document.createElement('p')
+            compNameText.textContent = res.data.name
+            compName.appendChild(compNameText)
 
-        //COMP HOMELAND
+            //COMP HOMELAND
 
-        let compHomelandText = document.createElement('p')
-        compHomelandText.textContent = res.data.homeland
-        compHomeland.appendChild(compHomelandText)
+            let compHomelandText = document.createElement('p')
+            compHomelandText.textContent = res.data.homeland
+            compHomeland.appendChild(compHomelandText)
 
-        //COMP TALENT
+            //COMP TALENT
 
-        let compTalentText = document.createElement('p')
-        compTalentText.textContent = res.data.talent
-        compTalent.appendChild(compTalentText)
+            let compTalentText = document.createElement('p')
+            compTalentText.textContent = res.data.talent
+            compTalent.appendChild(compTalentText)
 
-        //COMP PIC
+            //COMP PIC
 
-        let compPicImg = document.createElement('img')
-        compPicImg.src = res.data.pic
-        compPic.appendChild(compPicImg)
-    })
+            let compPicImg = document.createElement('img')
+            compPicImg.src = res.data.pic
+            compPic.appendChild(compPicImg)
+        })
 }
 
 const fightChar = (e) => {
@@ -178,9 +183,52 @@ const fightChar = (e) => {
     const attack = e.srcElement.parentElement.id
 
     axios.put(`/api/fightcharacter:${attack}`)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+        .then((res) => {
 
+            if (res.data.HP > 0) {
+                compHpText.textContent = `${res.data.HP}/100`
+                alert(`Your ${attack} attack damaged the computer! The computers new health level is ${res.data.HP}! Now, it's the computers turn!`)
+
+            }
+            else {
+                compHpText.textContent = `${res.data.HP}/100`
+                resetComp()
+                if(confirm("You killed the computer! Click'OK' to play again!")){
+                    window.location.reload();
+            }
+        }})
+
+        .catch(err => console.log(err))
+
+    compAtt()
+
+}
+
+const compAtt = () => {
+
+    let attacks = ['melee', 'ranged', 'magic']
+    let attIndex = Math.floor(Math.random() * attacks.length)
+    let thisAttack = attacks[attIndex]
+
+    axios.put(`/api/compattack:${thisAttack}`)
+        .then((res) => {
+            if (res.data.HP > 0) {
+                playerHpText.textContent = `${res.data.HP}/100`
+                alert(`The computer's ${thisAttack} attack harmed you! Your new health level is ${res.data.HP}! Your turn!`)
+            } else {
+                playerHpText.textContent = `${res.data.HP}/100`
+                resetComp()
+                if(confirm("You died! Click'OK' to play again!")){
+                    window.location.reload(); 
+                }
+            }
+        })
+}
+
+const resetComp = () => {
+    axios.get("/api/reset")
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err))
 }
 
 
