@@ -27,7 +27,7 @@ module.exports = {
             talent: randomTalent,
             HP: 100
         }
-        console.log(potChar)
+        // console.log(potChar)
         res.status(200).send(potChar)
     },
 
@@ -43,9 +43,9 @@ module.exports = {
             talent,
             HP: 100
         }
-
         charactersDb.push(newChar)
         res.status(200).send('Prepare for BATTLE!')
         charId++
+        console.log(charactersDb[charactersDb.length -1])
     }
 }

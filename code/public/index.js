@@ -1,13 +1,25 @@
+// MAIN BUTTONS
+
 const createBtn = document.getElementById('create-char')
 const keepBtn = document.getElementById('keep')
 const retryBtn = document.getElementById('retry')
 const fightBtn = document.getElementById('fight')
+
+// FIGHT BUTTONS
+
+const playerMeleeBtn = document.getElementById('player-melee')
+const playerRangedBtn = document.getElementById('player-ranged')
+const playerMagicBtn = document.getElementById('player-magic')
+
+// MAIN DIVS
 
 const centerDiv = document.getElementById('center')
 const leftDiv = document.getElementById('left')
 const rightDiv = document.getElementById('right')
 const outcome = document.getElementById("outcome")
 const innerCont = document.getElementById("inner-button-cont")
+
+//CHARACTER DIVS
 
 const createPicCont = document.getElementById("create-cont-pic")
 const createNameCont = document.getElementById("create-name")
@@ -19,6 +31,7 @@ const compName = document.getElementById('comp-name')
 const compHomeland = document.getElementById('comp-homeland')
 const compTalent = document.getElementById('comp-talent')
 
+// MISC
 let createCharEventHandlerFunction
 
 const createChar = (e) => {
@@ -71,8 +84,11 @@ const createChar = (e) => {
 
             rightDiv.classList.remove("hide")
             leftDiv.classList.remove("hide")
-            fightBtn.classList.add("reveal")
-            outcome.classList.add("reveal")
+
+            // Wanted to reveal these divs/buttons, but maybe they're too deeply nested/unreachable?
+            
+            // fightBtn.classList.add("reveal")
+            // outcome.classList.add("reveal")
             // innerCont.classList.add("reveal")
 
 
@@ -128,7 +144,6 @@ const keepChar = (charObj) => {
 }
 
 const compChar = () => {
-    console.log("you made it")
     axios.get("/api/createcharacter")
     .then(res => {
 
@@ -158,5 +173,26 @@ const compChar = () => {
     })
 }
 
+const fightChar = (e) => {
+
+    const attack = e.srcElement.parentElement.id
+
+    axios.put(`/api/fightcharacter:${attack}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
+}
+
+
+// EVENT LISTENERS :
+
+//MAIN BUTTONS
+
 createBtn.addEventListener("click", createChar)
 retryBtn.addEventListener("click", createChar)
+
+// FIGHT BUTTONS
+
+playerMeleeBtn.addEventListener("click", fightChar)
+playerRangedBtn.addEventListener("click", fightChar)
+playerMagicBtn.addEventListener("click", fightChar)

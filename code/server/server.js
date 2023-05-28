@@ -14,7 +14,7 @@ const { fightChar } = require("./battle.js")
 
 app.get("/api/createcharacter", createChar)
 app.post("/api/keepcharacter", keepChar)
-// app.put("/api/fightcharacter", fightChar)
+app.put("/api/fightcharacter:attack", fightChar)
 
 app.listen(4000, () => {
     console.log('up and running on port 4000')
