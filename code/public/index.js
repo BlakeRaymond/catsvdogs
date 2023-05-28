@@ -1,10 +1,13 @@
 const createBtn = document.getElementById('create-char')
 const keepBtn = document.getElementById('keep')
 const retryBtn = document.getElementById('retry')
+const fightBtn = document.getElementById('fight')
 
 const centerDiv = document.getElementById('center')
 const leftDiv = document.getElementById('left')
 const rightDiv = document.getElementById('right')
+const outcome = document.getElementById("outcome")
+const innerCont = document.getElementById("inner-button-cont")
 
 const createPicCont = document.getElementById("create-cont-pic")
 const createNameCont = document.getElementById("create-name")
@@ -23,6 +26,7 @@ const createChar = (e) => {
 
     keepBtn.classList.remove("hide")
     retryBtn.classList.remove("hide")
+    
 
     axios.get("/api/createcharacter")
     .then(res => {
@@ -67,6 +71,10 @@ const createChar = (e) => {
 
             rightDiv.classList.remove("hide")
             leftDiv.classList.remove("hide")
+            fightBtn.classList.add("reveal")
+            outcome.classList.add("reveal")
+            // innerCont.classList.add("reveal")
+
 
             keepChar(res.data), compChar()
         }
@@ -82,6 +90,7 @@ const keepChar = (charObj) => {
     keepBtn.classList.add("hide")
     retryBtn.classList.add("hide")
     centerDiv.classList.add("hide")
+
 
     
     let { pic, name, homeland, talent } = charObj

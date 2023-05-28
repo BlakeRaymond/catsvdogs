@@ -9,7 +9,7 @@ let talentDb = require("./db-talents.json")
 
 module.exports = {
     createChar: (req, res) => {
-        
+
         let nameIndex = Math.floor(Math.random() * nameDb.length);
         let homelandIndex = Math.floor(Math.random() * homelandDb.length);
         let picIndex = Math.floor(Math.random() * picDb.length);
@@ -24,9 +24,10 @@ module.exports = {
             pic: randomPic,
             name: randomName,
             homeland: randomHomeland,
-            talent: randomTalent
+            talent: randomTalent,
+            HP: 100
         }
-        charactersDb.length = 0
+        console.log(potChar)
         res.status(200).send(potChar)
     },
 
@@ -39,11 +40,12 @@ module.exports = {
             pic,
             name,
             homeland,
-            talent
+            talent,
+            HP: 100
         }
+
         charactersDb.push(newChar)
         res.status(200).send('Prepare for BATTLE!')
-        console.log(charactersDb)
         charId++
     }
 }
