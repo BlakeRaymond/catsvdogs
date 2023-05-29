@@ -32,8 +32,7 @@ drop table if exists talents;
 
         CREATE TABLE names (
             name_id SERIAL PRIMARY KEY,
-            first VARCHAR,
-            last VARCHAR,
+            name VARCHAR,
             picurl VARCHAR
         );
 
@@ -47,11 +46,11 @@ drop table if exists talents;
             talent VARCHAR
         );
 
-        INSERT INTO names (first, last, picurl)
+        INSERT INTO names (name, picurl)
         VALUES
-            ('lower-case', 'fred', 'https://drive.google.com/uc?id=17tJO189IbJhzyTT9ZiU1AY2wA76fFopY'),
-            ('Jollyhock', 'Brzenskoff', 'https://drive.google.com/uc?id=1FmRmYylv2BzUfe5UNmnTKlIpM1VXXSr2'),
-            ('Jane', 'the Mute', 'https://drive.google.com/uc?id=1saCTSwmX4BGfmd4Kxn9P5YkZSTFnoGfU');
+            ('lower-case fred', 'https://drive.google.com/uc?id=17tJO189IbJhzyTT9ZiU1AY2wA76fFopY'),
+            ('Jollyhock Brzenskoff', 'https://drive.google.com/uc?id=1FmRmYylv2BzUfe5UNmnTKlIpM1VXXSr2'),
+            ('Jane the Mute', 'https://drive.google.com/uc?id=1saCTSwmX4BGfmd4Kxn9P5YkZSTFnoGfU');
 
         INSERT INTO homelands (homeland)
         VALUES
@@ -116,5 +115,20 @@ drop table if exists talents;
         charactersDb[0].HP = 100
 
         res.status(200)
+    },
+
+    submitToDb: (req, res) => {
+
+        let { name, homeland, talent, pic } = req.body
+
+        sequelize.query(`
+        INSERT INTO names (name, picurl) VALUES ('${name}', '${pic}');
+        INSERT INTO homelands (homeland) VALUES ('${homeland}');
+        INSERT INTO talents (talent) VALUES ('${talent}');
+        `)
+        .then((dbRes) => {
+            res.status(200)
+        })
+        .catch((err) => console.log(err))
     }
 }

@@ -48,21 +48,18 @@ module.exports = {
                 let melee = Math.floor(Math.random() * (8 - 4) + 4)
                 player.HP -= melee
                 ifZero(player.HP)
-                // res.status(200).send(player)
             }
 
             if (req.params.attack === ':ranged') {
                 let ranged = Math.floor(Math.random() * (13 - 0) + 0)
                 player.HP -= ranged
                 ifZero(player.HP)
-                // res.status(200).send(player)
             }
 
             if (req.params.attack === ':magic') {
                 let magic = Math.floor(Math.random() * (20 - 0) + 0)
                 player.HP -= magic
                 ifZero(player.HP)
-                // res.status(200).send(player)
             }
 
             function ifZero(num) {
