@@ -179,11 +179,25 @@ img {
     position: fixed;
     top: 75%;
     left: 50%;
-    z-index: 1;
 }
 
 #outcome {
     left: 50%;
     position: fixed;
-    z-index: 1;
+}
+
+.reveal {
+    visibility: visible;
+}
+
+footer {
+    width: 55%;
+    display:flex;
+    justify-content: space-around;
+    margin: auto;
+    background-color: grey;
+}
+
+nav {
+    text-decoration: none;    
 }

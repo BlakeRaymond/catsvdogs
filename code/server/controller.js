@@ -1,3 +1,17 @@
+require('dotenv')
+
+const Sequelize = require('sequelize')
+const { CONNECTION_STRING } = process.env
+
+const sequelize = new Sequelize(CONNECTION_STRING, {
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+})
+
 let charId = 0
 
 let charactersDb = require("./db-characters.json")
@@ -8,13 +22,63 @@ let picDb = require("./db-pics.json")
 let talentDb = require("./db-talents.json")
 
 module.exports = {
+
+    seed: (req, res) => {
+        sequelize.query(`
+
+        drop table if exists names;
+drop table if exists homelands;
+drop table if exists talents;
+
+        CREATE TABLE names (
+            name_id SERIAL PRIMARY KEY,
+            first VARCHAR,
+            last VARCHAR,
+            picurl VARCHAR
+        );
+
+        CREATE TABLE homelands (
+            homeland_id SERIAL PRIMARY KEY,
+            homeland VARCHAR
+        );
+
+        CREATE TABLE talents (
+            talent_id SERIAL PRIMARY KEY,
+            talent VARCHAR
+        );
+
+        INSERT INTO names (first, last, picurl)
+        VALUES
+            ('lower-case', 'fred', 'https://drive.google.com/uc?id=17tJO189IbJhzyTT9ZiU1AY2wA76fFopY'),
+            ('Jollyhock', 'Brzenskoff', 'https://drive.google.com/uc?id=1FmRmYylv2BzUfe5UNmnTKlIpM1VXXSr2'),
+            ('Jane', 'the Mute', 'https://drive.google.com/uc?id=1saCTSwmX4BGfmd4Kxn9P5YkZSTFnoGfU');
+
+        INSERT INTO homelands (homeland)
+        VALUES
+            ('Narnia'),
+            ('Mars'),
+            ('Washington D.C.');
+
+        INSERT INTO talents (talent)
+            VALUES
+            ('Acidey Spit'),
+            ('Future Sight'),
+            ('Gun Fists');
+            `)
+            .then(() => {
+                console.log('DB Seeded!')
+                res.status(200)
+            })
+            .catch((err) => console.log('error seeding database', err))
+    },
+
     createChar: (req, res) => {
 
         let nameIndex = Math.floor(Math.random() * nameDb.length);
         let homelandIndex = Math.floor(Math.random() * homelandDb.length);
         let picIndex = Math.floor(Math.random() * picDb.length);
         let talentIndex = Math.floor(Math.random() * talentDb.length);
-        
+
         let randomName = nameDb[nameIndex];
         let randomHomeland = homelandDb[homelandIndex];
         let randomPic = picDb[picIndex];
@@ -31,11 +95,11 @@ module.exports = {
     },
 
     keepChar: (req, res) => {
-        
+
         let { pic, name, homeland, talent } = req.body
-        
+
         let newChar = {
-            Id : charId,
+            Id: charId,
             pic,
             name,
             homeland,
