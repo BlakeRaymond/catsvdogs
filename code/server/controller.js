@@ -50,8 +50,7 @@ module.exports = {
     resetComp: (req, res) => {
 
         charactersDb[0].HP = 100
-        console.log(charactersDb[0])
 
-        res.status(200).send("You did it!")
+        res.status(200)
     }
 }

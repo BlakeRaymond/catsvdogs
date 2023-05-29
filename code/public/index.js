@@ -186,9 +186,9 @@ const fightChar = (e) => {
         .then((res) => {
 
             if (res.data.HP > 0) {
+                console.log(res.data.HP)
                 compHpText.textContent = `${res.data.HP}/100`
                 alert(`Your ${attack} attack damaged the computer! The computers new health level is ${res.data.HP}! Now, it's the computers turn!`)
-
             }
             else {
                 compHpText.textContent = `${res.data.HP}/100`

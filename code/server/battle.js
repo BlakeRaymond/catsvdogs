@@ -12,21 +12,30 @@ module.exports = {
         if (req.params.attack === ':player-melee') {
             let melee = Math.floor(Math.random() * (8 - 4) + 4)
             comp.HP -= melee
-            res.status(200).send(comp)
+            checkIfZero(comp.HP)
         }
 
         if (req.params.attack === ':player-ranged') {
             let ranged = Math.floor(Math.random() * (13 - 0) + 0)
             comp.HP -= ranged
-            res.status(200).send(comp)
+            checkIfZero(comp.HP)
         }
 
         if (req.params.attack === ':player-magic') {
             let magic = Math.floor(Math.random() * (20 - 0) + 0)
             comp.HP -= magic
-            res.status(200).send(comp)
+            checkIfZero(comp.HP)
         }
 
+        // CHECK IF ZERO
+
+        function checkIfZero(num) {
+            if (num > 0) {
+                res.status(200).send(comp)
+            } else {
+                res.status(200).send("You killed the computer! Press OK for another chance at GLORY!")
+            }
+        }
 
     },
 
@@ -38,20 +47,31 @@ module.exports = {
             if (req.params.attack === ':melee') {
                 let melee = Math.floor(Math.random() * (8 - 4) + 4)
                 player.HP -= melee
-                res.status(200).send(player)
+                ifZero(player.HP)
+                // res.status(200).send(player)
             }
 
             if (req.params.attack === ':ranged') {
                 let ranged = Math.floor(Math.random() * (13 - 0) + 0)
                 player.HP -= ranged
-                res.status(200).send(player)
+                ifZero(player.HP)
+                // res.status(200).send(player)
             }
 
             if (req.params.attack === ':magic') {
                 let magic = Math.floor(Math.random() * (20 - 0) + 0)
                 player.HP -= magic
-                res.status(200).send(player)
+                ifZero(player.HP)
+                // res.status(200).send(player)
             }
-            
+
+            function ifZero(num) {
+                if (num > 0) {
+                    res.status(200).send(player)
+                } else {
+                    res.status(200).send("You have *died.* The computer has killed you with murder. Press OK for another duel with death. IF. YOU. DAAAAARE!")
+                }
+            }
+
     }
 }
