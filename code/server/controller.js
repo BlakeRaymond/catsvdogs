@@ -73,24 +73,43 @@ drop table if exists talents;
 
     createChar: (req, res) => {
 
-        let nameIndex = Math.floor(Math.random() * nameDb.length);
-        let homelandIndex = Math.floor(Math.random() * homelandDb.length);
-        let picIndex = Math.floor(Math.random() * picDb.length);
-        let talentIndex = Math.floor(Math.random() * talentDb.length);
+        sequelize.query(`
+        SELECT COUNT (*) FROM names;
+        `).then((dbRes) => {
+            randomizer(dbRes[0][0])
+        })
 
-        let randomName = nameDb[nameIndex];
-        let randomHomeland = homelandDb[homelandIndex];
-        let randomPic = picDb[picIndex];
-        let randomTalent = talentDb[talentIndex];
-
-        let potChar = {
-            pic: randomPic,
-            name: randomName,
-            homeland: randomHomeland,
-            talent: randomTalent,
-
+        const randomizer = (counts) => {
+            let int1 = Math.floor(Math.random() * counts.count)+ 1;
+            let int2 = Math.floor(Math.random() * counts.count)+ 1;
+            let int3 = Math.floor(Math.random() * counts.count)+ 1;     
+            
+            sequelize.query(`
+            SELECT name, picurl FROM names WHERE name_id = ${int1};
+            SELECT homeland FROM homelands WHERE homeland_id = ${int2};
+            SELECT talent FROM talents WHERE talent_id = ${int3}
+            `).then(dbRes => buildChar(dbRes[0]))
         }
-        res.status(200).send(potChar)
+
+        const buildChar = (charArr) => {
+
+            let randomName = charArr[0].name;            
+            let randomHomeland = charArr[1].homeland;
+            let randomPic = charArr[0].picurl;
+            let randomTalent = charArr[2].talent;
+
+
+            let potChar = {
+                pic: randomPic,
+                name: randomName,
+                homeland: randomHomeland,
+                talent: randomTalent,
+    
+            }
+            res.status(200).send(potChar)
+        }
+
+
     },
 
     keepChar: (req, res) => {
