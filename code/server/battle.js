@@ -1,7 +1,5 @@
 charactersDb = require("./db-characters.json")
 
-
-
 module.exports = {
 
     fightChar: (req, res) => {

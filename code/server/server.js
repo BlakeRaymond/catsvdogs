@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, "../public")))
 
 const { createChar, keepChar, resetComp, seed, submitToDb } = require("./controller.js")
 const { fightChar, compAtt } = require("./battle.js")
+const { signUp } = require("./user-controller.js")
 
 //SEED ENDPOINT
 
@@ -28,7 +29,9 @@ app.post("/api/keepcharacter", keepChar)
 app.put("/api/fightcharacter:attack", fightChar)
 app.put("/api/compattack:attack", compAtt)
 
+//USER ENDPOINTS
 
+app.post("/api/signup", signUp)
 
 app.listen(SERVER_PORT, () => {
     console.log(`up and running on port ${SERVER_PORT}`)

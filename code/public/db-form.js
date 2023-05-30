@@ -9,8 +9,6 @@ function submitHandler(e) {
 
     e.preventDefault()
 
-    console.log(nameInput.value, homelandInput.value, talentInput.value, picInput.value)
-
     if (!nameInput.value || !homelandInput.value || !talentInput.value || !picInput.value) {
         alert('Please enter a value into each field')
         return
@@ -28,7 +26,6 @@ function submitHandler(e) {
     .catch((err) => console.log(err))
 
     form.reset()
-
 
 }
 
