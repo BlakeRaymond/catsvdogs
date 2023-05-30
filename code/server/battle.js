@@ -12,22 +12,32 @@ module.exports = {
         if (req.params.attack === ':player-melee') {
             let melee = Math.floor(Math.random() * (8 - 4) + 4)
             comp.HP -= melee
-            checkIfZero(comp.HP)
         }
 
         if (req.params.attack === ':player-ranged') {
             let ranged = Math.floor(Math.random() * (13 - 0) + 0)
+
+
+            if (ranged === 0) {
+                res.status(200).send('zero')
+                return
+            }
             comp.HP -= ranged
-            checkIfZero(comp.HP)
         }
 
         if (req.params.attack === ':player-magic') {
             let magic = Math.floor(Math.random() * (20 - 0) + 0)
-            comp.HP -= magic
-            checkIfZero(comp.HP)
-        }
 
+            if (magic === 0) {
+                res.status(200).send('zero')
+                return
+            }
+
+            comp.HP -= magic
+        }
+        
         // CHECK IF ZERO
+        checkIfZero(comp.HP)
 
         function checkIfZero(num) {
             if (num > 0) {
@@ -47,20 +57,31 @@ module.exports = {
             if (req.params.attack === ':melee') {
                 let melee = Math.floor(Math.random() * (8 - 4) + 4)
                 player.HP -= melee
-                ifZero(player.HP)
             }
 
             if (req.params.attack === ':ranged') {
                 let ranged = Math.floor(Math.random() * (13 - 0) + 0)
+
+                if (ranged === 0) {
+                    res.status(200).send('zero')
+                    return
+                }
                 player.HP -= ranged
-                ifZero(player.HP)
             }
 
             if (req.params.attack === ':magic') {
                 let magic = Math.floor(Math.random() * (20 - 0) + 0)
+
+                if (magic === 0) {
+                    res.status(200).send('zero')
+                    return
+                }
+
                 player.HP -= magic
-                ifZero(player.HP)
             }
+            
+            ifZero(player.HP)
+            
 
             function ifZero(num) {
                 if (num > 0) {

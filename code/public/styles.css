@@ -19,6 +19,13 @@ section {
     
 }
 
+.main-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .info-cont {
     margin-top: 15px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -49,7 +56,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .char-info {
@@ -76,10 +82,16 @@ margin-top: 40px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 550;
-font-size: 1.5vw;
+font-size: 135%;
 line-height: 38px;
 text-align: center;
 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button-cont {
@@ -195,7 +207,7 @@ footer {
     display:flex;
     justify-content: center;
     margin: auto;
-    transform: translate(0, -50px);
+    transform: translate(0, -3vw);
 }
 
 nav {

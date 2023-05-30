@@ -185,23 +185,23 @@ const fightChar = (e) => {
     axios.put(`/api/fightcharacter:${attack}`)
         .then((res) => {
 
-            if (res.data.HP > 0) {
-                console.log(res.data.HP)
+            if (res.data.HP) {
+                // console.log(res.data.HP)
                 compHpText.textContent = `${res.data.HP}/100`
                 alert(`Your ${attack} attack damaged the computer! The computers new health level is ${res.data.HP}! Now, it's the computers turn!`)
-            }
+                compAtt()
+            } else if (res.data === 'zero') {
+                alert(`Your ${attack} missed! The computer will now counter.`)
+                compAtt()
+            }         
             else {
-                compHpText.textContent = `${res.data.HP}/100`
+                compHpText.textContent = `DEAD`
                 resetComp()
-                if(confirm("You killed the computer! Click'OK' to play again!")){
+                if(confirm(res.data)){
                     window.location.reload();
             }
         }})
-
         .catch(err => console.log(err))
-
-    compAtt()
-
 }
 
 const compAtt = () => {
@@ -212,13 +212,16 @@ const compAtt = () => {
 
     axios.put(`/api/compattack:${thisAttack}`)
         .then((res) => {
-            if (res.data.HP > 0) {
+            if (res.data.HP) {
                 playerHpText.textContent = `${res.data.HP}/100`
                 alert(`The computer's ${thisAttack} attack harmed you! Your new health level is ${res.data.HP}! Your turn!`)
-            } else {
-                playerHpText.textContent = `${res.data.HP}/100`
+            } else if (res.data === 'zero') {
+                alert(`The computer's ${thisAttack} missed! Lucky you. Attack!`)
+            }         
+            else {
+                playerHpText.textContent = `DEAD`
                 resetComp()
-                if(confirm("You died! Click'OK' to play again!")){
+                if(confirm(res.data)){
                     window.location.reload(); 
                 }
             }

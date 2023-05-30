@@ -16,11 +16,6 @@ let charId = 0
 
 let charactersDb = require("./db-characters.json")
 
-let nameDb = require("./db-names.json")
-let homelandDb = require("./db-homelands.json")
-let picDb = require("./db-pics.json")
-let talentDb = require("./db-talents.json")
-
 module.exports = {
 
     seed: (req, res) => {
@@ -93,18 +88,11 @@ drop table if exists talents;
 
         const buildChar = (charArr) => {
 
-            let randomName = charArr[0].name;            
-            let randomHomeland = charArr[1].homeland;
-            let randomPic = charArr[0].picurl;
-            let randomTalent = charArr[2].talent;
-
-
             let potChar = {
-                pic: randomPic,
-                name: randomName,
-                homeland: randomHomeland,
-                talent: randomTalent,
-    
+                pic: charArr[0].picurl,
+                name: charArr[0].name,
+                homeland: charArr[1].homeland,
+                talent: charArr[2].talent    
             }
             res.status(200).send(potChar)
         }
