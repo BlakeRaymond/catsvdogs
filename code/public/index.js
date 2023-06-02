@@ -31,6 +31,10 @@ const compName = document.getElementById('comp-name')
 const compHomeland = document.getElementById('comp-homeland')
 const compTalent = document.getElementById('comp-talent')
 
+//SAVED
+
+let saved = document.getElementById('saved-chars')
+
 //HP COUNTER
 
 const playerHpText = document.getElementById('hp')
@@ -233,6 +237,31 @@ const resetComp = () => {
     .then((res) => console.log(res.data))
     .catch((err) => console.log(err))
 }
+
+const getFighters = () => {
+axios.get("/api/getfighters")
+.then((res) => {
+
+    for (let i=0; i < res.data.length; i++) {
+
+        let charNameP = document.createElement('p')
+        let charHomelandP = document.createElement('p')
+        let charTalentP = document.createElement('p')
+        let charPicP = document.createElement('p')
+
+        charNameP.textContent = res.data[i].char_name
+        charHomelandP.textContent = res.data[i].char_homeland
+        charTalentP.textContent = res.data[i].char_talent
+        charPicP.textContent = res.data[i].char_pic
+
+        saved.appendChild(charNameP)
+        saved.appendChild(charHomelandP)
+        saved.appendChild(charTalentP)
+        saved.appendChild(charPicP)
+    }
+})
+.catch((err) => console.log(err))
+};
 
 
 // EVENT LISTENERS :

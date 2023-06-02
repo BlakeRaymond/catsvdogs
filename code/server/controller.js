@@ -75,10 +75,10 @@ drop table if exists talents;
         })
 
         const randomizer = (counts) => {
-            let int1 = Math.floor(Math.random() * counts.count)+ 1;
-            let int2 = Math.floor(Math.random() * counts.count)+ 1;
-            let int3 = Math.floor(Math.random() * counts.count)+ 1;     
-            
+            let int1 = Math.floor(Math.random() * counts.count) + 1;
+            let int2 = Math.floor(Math.random() * counts.count) + 1;
+            let int3 = Math.floor(Math.random() * counts.count) + 1;
+
             sequelize.query(`
             SELECT name, picurl FROM names WHERE name_id = ${int1};
             SELECT homeland FROM homelands WHERE homeland_id = ${int2};
@@ -92,7 +92,7 @@ drop table if exists talents;
                 pic: charArr[0].picurl,
                 name: charArr[0].name,
                 homeland: charArr[1].homeland,
-                talent: charArr[2].talent    
+                talent: charArr[2].talent
             }
             res.status(200).send(potChar)
         }
@@ -113,6 +113,12 @@ drop table if exists talents;
             HP: 100
         }
         charactersDb.push(newChar)
+        if (req.session.userID) {
+            sequelize.query(`
+            INSERT INTO characters (char_name, char_homeland, char_talent, char_pic, user_id)
+            VALUES ('${name}', '${homeland}', '${talent}', '${pic}', '${req.session.userID}')
+            `)
+        }
         res.status(200).send('Prepare for BATTLE!')
         charId++
     },
@@ -133,9 +139,22 @@ drop table if exists talents;
         INSERT INTO homelands (homeland) VALUES ('${homeland}');
         INSERT INTO talents (talent) VALUES ('${talent}');
         `)
-        .then((dbRes) => {
-            res.status(200)
-        })
-        .catch((err) => console.log(err))
+            .then((dbRes) => {
+                res.status(200)
+            })
+            .catch((err) => console.log(err))
+    },
+
+    getFighters: (req, res) => {
+        if (req.sessionID && req.session.userID) {
+            sequelize.query(`
+            SELECT char_name, char_homeland, char_talent, char_pic FROM characters WHERE '${req.session.userID}' = user_id
+            `)
+                .then((dbRes) => loadChar(dbRes[0]))
+        }
+
+        const loadChar = (savedChars) => {
+        res.status(200).send(savedChars)
+        }
     }
 }

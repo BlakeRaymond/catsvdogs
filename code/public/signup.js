@@ -9,8 +9,9 @@ const sendSignup = (body) => {
   axios.post(signupURL, body)
   .then(res => {
     if (res.data.success) {
-      console.log('signup successful')
-      alert('Your account was successfully created!')
+      console.log('Signup successful!')
+      alert('Your account was successfully created! Now, please login.')
+      window.location.href = "./login.html";
     } else {
       console.log('No axios error, but signup not successful :(')
     }
