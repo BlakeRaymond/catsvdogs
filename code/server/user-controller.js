@@ -52,7 +52,8 @@ module. exports = {
                 res.status(200).send({success: false, message: 'Username or password is incorrect. Please try again.'})
             } else {
                 req.session.userID = data.user_id
-                res.status(200).send({success: true, message: 'You said the right thing!', user: data})
+                console.log(req.session)
+                res.status(200).send({success: true, message: 'You said the right thing!', userID: data.user_id})
                 
             }
 

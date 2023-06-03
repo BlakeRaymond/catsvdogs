@@ -1,0 +1,16 @@
+@font-face {
+    font-family: blood-script;
+    src: url('./bloodscript.otf');
+}
+
+body {
+    background-color: black;
+}
+
+#display-cont {
+    width: 66vw;
+    height: 15vh;
+    background: #B36F6F;
+    border-radius: 28px;
+}
+

@@ -9,8 +9,8 @@ const sendLogin = body => {
     axios.post(loginURL, body)
     .then((res) => {
       if (res.data.success) {
-        console.log('login successful', res.data.user)
-        window.location.href = "http://localhost:4000"
+        console.log('login successful', res.data)
+        window.location.href = "/"
       } else {
         console.log('no axios error, but login not successful: bad username or password')
         alert(res.data.message)

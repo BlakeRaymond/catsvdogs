@@ -53,7 +53,7 @@ app.put("/api/compattack:attack", compAtt)
 
 app.post("/api/signup", signUp)
 app.post("/api/login", login)
-app.get("/api/getFighters", getFighters)
+app.get("/api/getfighters", getFighters)
 
 app.listen(SERVER_PORT, () => {
     console.log(`up and running on port ${SERVER_PORT}`)

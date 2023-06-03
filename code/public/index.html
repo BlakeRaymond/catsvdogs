@@ -10,10 +10,9 @@
 </head>
 <body>
     <header>
-        <nav class="foot-link" id="fighters" onclick="() => {getFighters(req.sessionID)}"><a href="characters.html">Fighters</a></nav>
+        <nav class="foot-link" id="fighters" ><a href="./characters.html">Fighters</a></nav>
     </header>
     <section>
-
         <div class="side hide" id="left">
             <div class="character-pic" id="saved-pic"></div>
             <div class="char-info info-cont" id="saved-name"></div>
@@ -25,32 +24,22 @@
                 <button class="att-btn melee" id="player-melee"><img src="https://drive.google.com/uc?id=1_tKz6kAGSOXxgFcm9b8qTrhWlNjrl1_j" style="border-radius: 0"></button>
                 <button class="att-btn ranged" id="player-ranged"><img src="https://drive.google.com/uc?id=10o7Q_kK_XrQY2NzNcPNZDtynEdj7tlNC" style="border-radius: 0"></button>
                 <button class="att-btn magic" id="player-magic"><img src="https://drive.google.com/uc?id=1o4Ngl7ohxYkqGl5rSLbcaljDOJIibjjU" style="border-radius: 0"></button>
-            </div>
-            
+            </div>            
         </div>
-
         <div id="center">
             <h1 id="banner">WELCOME</h1>
             <div id="create-cont">
-
                 <div id="create-cont-pic" class="info-cont"></div>
                 <div class="char-info info-cont" id="create-name"></div>
                 <div class="char-info info-cont" id="create-homeland"></div>
                 <div class="char-info info-cont" id="create-talent"></div>
                 <button id="create-char" class="btn">Create Character</button>
-
             </div>
-
             <div class="button-cont">
                 <button class="opt btn hide" id="keep">Keep</button>
                 <button class="opt btn hide" id="retry">Retry</button>
-                <div class="inner-button-cont">
-                    <button class="btn hide" id="outcome"></button>
-                    <button class="btn hide" id="fight">FIGHT!</button>
-                </div>
             </div>
         </div>
-
         <div class="side hide" id="right">
             <div class="character-pic" id="comp-pic"></div>
             <div class="char-info info-cont" id="comp-name"></div>
@@ -64,16 +53,12 @@
             <button class="att-btn magic"><img src="https://drive.google.com/uc?id=1o4Ngl7ohxYkqGl5rSLbcaljDOJIibjjU" style="border-radius: 0"></button>
         </div>
         </div>
-
     </section>
-
-
 <footer>
     <nav class="foot-link"><a href="login.html">Login</a></nav>
     <nav class="foot-link"><a href="signup.html">Signup</a></nav>
     <nav class="foot-link" id="dbsubmit"><a href="db-form.html">DbSubmit</a></nav>
-</footer>
-    
+</footer>    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
 </body>

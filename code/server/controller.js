@@ -151,9 +151,12 @@ drop table if exists talents;
             SELECT char_name, char_homeland, char_talent, char_pic FROM characters WHERE '${req.session.userID}' = user_id
             `)
                 .then((dbRes) => loadChar(dbRes[0]))
-        }
+        }      
 
-        const loadChar = (savedChars) => {
+        const loadChar = (savedChars) => {   
+            if (!savedChars) {
+                return ("You haven't saved any fighters yet.")
+            }        
         res.status(200).send(savedChars)
         }
     }
