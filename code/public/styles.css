@@ -1,15 +1,15 @@
 @font-face { font-family: blood-script; src: url('./bloodscript.otf'); } 
 
-/* body {
-    height: 100vmax;
-} */
+body {
+    overflow: -moz-hidden-unscrollable;
+}
 
 section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-self: auto;
-    width: 99.8vw;    
+    width: 99.8vw;
 }
 
 #create-cont {
@@ -44,7 +44,7 @@ section {
 
 #create-cont-pic {  
     
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     width: 95%;
     height: 50%;
     
@@ -131,10 +131,12 @@ form {
 
 .character-pic {
     background-color: white;
-    height: 18vw;
+    height: 20vmax;
     width: 95%;
     border-radius: 28px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
 }
 
 .hp-text {
@@ -164,10 +166,6 @@ img {
     border-radius: 28px;
 }
 
-.character-pic {
-    display: flex;
-    justify-content: center;
-}
 
 #create-cont-pic {
     display: flex;
@@ -187,7 +185,7 @@ nav {
     justify-content: center;
     align-items: center;
     margin: 0px 1.2vmax;
-    transform: translate(0, -5vh);
+    transform: translate(0, -8vh);
 }
 
 footer {
