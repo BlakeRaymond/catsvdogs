@@ -1,17 +1,22 @@
 @font-face { font-family: blood-script; src: url('./bloodscript.otf'); } 
 
+/* body {
+    height: 100vmax;
+} */
+
 section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin:0;
+    align-self: auto;
+    width: 99.8vw;    
 }
 
 #create-cont {
     
     width: 25vw;
     max-width: 750px;
-    height: 527px;
+    height: 50vh;
     
     background: #B36F6F;
     border-radius: 28px;
@@ -26,11 +31,11 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .info-cont {
-    margin-top: 15px;
+    margin-top: 2vh;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -41,7 +46,7 @@ section {
     
     box-sizing: border-box;
     width: 95%;
-    height: 254px;
+    height: 50%;
     
     background: #FFFDFD;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -51,8 +56,8 @@ section {
 
 #banner {
     text-align: center;
-    padding-bottom: 10px;
-    font-size: 5em;
+    padding-bottom: 1.5vh;
+    font-size: 4vw;
 }
 
 #center {
@@ -65,31 +70,30 @@ section {
 .char-info {
     
     width: 95%;
-    height: 24px;
+    height: 2.5vh;
     
     background: #FFFEFE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 28px;
+
+    font-size: 1vmax;
     
 }
 
 .btn {
     
 width: 60%;
-height: 62px;
-
+height: 4.5vh;
 background: #FFFDFD;
 border-radius: 28px;
-
-margin-top: 40px;
-
+margin-top: 2.75vh;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 550;
-font-size: 135%;
-line-height: 38px;
-text-align: center;
-
+font-size: 1.5vmax;
+display:flex;
+justify-content: center;
+align-items: center;
 }
 
 form {
@@ -116,6 +120,8 @@ form {
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 98.5vh;
     width: 22.5%;
     background-color: #D9D9D9;
     box-shadow: 0 0 10px black;
@@ -132,11 +138,11 @@ form {
 }
 
 .hp-text {
-    font-size: 7vw;
+    font-size: 6vmax;
 }
 
 .att-btn-cont {
-    margin-top: 20px;
+    margin-top: 3vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -169,19 +175,19 @@ img {
 }
 
 nav {
-    /* background-color: grey; */
-    font-size: min(max(16px, 4vw), 40px);
-    height: 1.5vw;
+    font-size:calc(8px + 1vmax);
+    height: 1.65vh;
     border-radius: 28px;
-    padding: 10px;
+    padding: .5vmax;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 2px solid black;
-    width: 8vw;
+    width:7%;
+    min-width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 25px;
-    transform: translate(0, -5vw);
+    margin: 0px 1.2vmax;
+    transform: translate(0, -5vh);
 }
 
 footer {
@@ -193,13 +199,13 @@ footer {
 
 header {
     display: flex;
-    margin: auto;
+    margin: 0;
     justify-content: center;
     height: 0;
 }
 
 #fighters {    
-    transform: translate(0, 3vw);
+    transform: translate(0, 3vh);
 }
 
 a {
@@ -207,13 +213,4 @@ a {
     font-weight: 550;
     font-family: blood-script;
     color: rgb(156, 26, 26);
-    padding: 2px;
-}
-
-body {
-    margin: 0;
-}
-
-section {
-    margin:0;
 }
