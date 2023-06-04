@@ -170,7 +170,7 @@ img {
 }
 
 nav {
-    font-size:calc(8px + 1vmax);
+    font-size:calc(5px + 1vmax);
     height: 1.65vh;
     border-radius: 28px;
     padding: .5vmax;
