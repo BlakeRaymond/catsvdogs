@@ -120,7 +120,7 @@ form {
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 98.5vh;
     width: 22.5%;
     background-color: #D9D9D9;
@@ -153,7 +153,7 @@ width: 25%;
 height: 100%;
 background: #EBA5A5;
 border-radius: 28px;
-padding: 1.5vmin;
+padding: 3%;
 }
 
 img {
