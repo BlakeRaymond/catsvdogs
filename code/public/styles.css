@@ -1,8 +1,9 @@
 @font-face { font-family: blood-script; src: url('./bloodscript.otf'); } 
 
-body {
-    overflow: -moz-hidden-unscrollable;
-}
+/* body {
+    overflow: -moz-hidden-unscrollable; 
+}*/
+
 
 section {
     display: flex;
@@ -44,12 +45,11 @@ section {
 
 #create-cont-pic {  
     
-    /* box-sizing: border-box; */
     width: 95%;
     height: 50%;
     
     background: #FFFDFD;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1.5vh 1.5vh rgba(0, 0, 0, 0.25);
     border-radius: 28px;
     
 }
@@ -73,7 +73,7 @@ section {
     height: 2.5vh;
     
     background: #FFFEFE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1.5vh 1.5vh rgba(0, 0, 0, 0.25);
     border-radius: 28px;
 
     font-size: 1vmax;
@@ -120,12 +120,11 @@ form {
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 98.5vh;
     width: 22.5%;
     background-color: #D9D9D9;
-    box-shadow: 0 0 10px black;
-    padding-top: 15px;
+    /* box-shadow: 0 0 2vmax black; */
     margin: 0 0;
 }
 
@@ -134,29 +133,27 @@ form {
     height: 20vmax;
     width: 95%;
     border-radius: 28px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1.5vh 1.5vh rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
 }
 
 .hp-text {
-    font-size: 6vmax;
+    font-size: 7vmin;
 }
 
 .att-btn-cont {
-    margin-top: 3vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
 .att-btn {
-
 width: 25%;
-height: 6vw;
+height: 100%;
 background: #EBA5A5;
 border-radius: 28px;
-
+padding: 1.5vmin;
 }
 
 img {
@@ -177,7 +174,7 @@ nav {
     height: 1.65vh;
     border-radius: 28px;
     padding: .5vmax;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1.5vh 1.5vh rgba(0, 0, 0, 0.25);
     border: 2px solid black;
     width:7%;
     min-width: 70px;
