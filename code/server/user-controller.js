@@ -15,6 +15,8 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
 })
 
+console.log('sequelize connection initiated')
+
 module. exports = {
     signUp: (req, res) => {
 

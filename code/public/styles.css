@@ -26,13 +26,13 @@
 }
 
 .rad28 {
-    border-radius: 2vh; 
+    border-radius: 2vh;
     box-shadow: 0px 1vh 1vh rgba(0, 0, 0, 0.25);
 }
 
 #create-cont {    
     width: 25vw;
-    /* min-width: 250px; JUST AN IDEA FOR PHONES, I AM TRYING TO AVOID MEDIA QUERY*/
+    min-width: 175px;
     height: 65vh;    
     background: #B36F6F;
 }
@@ -41,7 +41,6 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 95%;
     background-color: #FFFEFE;
-    font-size:calc(3px + 1vmax);
 }
 
 .banner {
@@ -53,6 +52,7 @@
 
 .char-info {    
     height: 2.5vh;    
+    font-size:calc(3px + 1vmax);
 }
 
 .btn {    
@@ -79,7 +79,7 @@ border: .13vmax solid black;
 
 .character-pic {
     height: 32.5vh;
-    min-height: 90px;
+    min-height: 107px;
 }
 
 .hp-text {
@@ -94,11 +94,12 @@ border: .13vmax solid black;
 
 .att-btn {
     width: 6vw;
+    min-width: 27.5%;
+    max-width: 15vh;
     height: 9vh;
-    min-height: 30px;
+    min-height: 12vh;
     background: #EBA5A5;
-    padding: 5px;
-    border: .13vmax solid black;
+    border: 2px solid black;
 }
 
 img {
@@ -109,14 +110,15 @@ img {
 
 
 nav {
-    font-size:calc(5px + 1vmax);
     height: 1.65vh;
-    padding: .5vmax;
-    border: .13vmax solid black;
     width:7%;
     min-width: 55px;
+    min-height: 12px;
+    font-size:calc(9px + 1vmax);
+    padding: .5vmax;
+    border: .13vmax solid black;
     margin: 0px 1vmax;
-    transform: translate(0, -8vh);
+    transform: translate(0, -10vh);
 }
 
 .endcap {
